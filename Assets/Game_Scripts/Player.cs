@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
         _direction = new Vector3(horizontal, 0f, vertical);
 
         MovementAction();
+
         JumpAction();
 
         HungerBar();
@@ -65,6 +68,8 @@ public class Player : MonoBehaviour
             Vector3 moveDir = CameraControl();
 
             characterController.Move(moveDir.normalized * speedAmount * Time.deltaTime);
+
+            JumpAction();
         }
     }
 
