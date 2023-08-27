@@ -24,13 +24,13 @@ public class CheeseHandler : MonoBehaviour
         {
             var player = other.GetComponent<Player>();
             GetHealed(player);
-            StartCoroutine(player.SpeedBoosted());
+            player.StartCoroutine(player.SpeedBoosted());
         }
         if (other.CompareTag("Player") && cheeseState == CheeseState.JUMP)
         {
             var player = other.GetComponent<Player>();
             GetHealed(player);
-            StartCoroutine(player.JumpBoosted());
+            player.StartCoroutine(player.JumpBoosted());
         }
     }
 
@@ -39,6 +39,6 @@ public class CheeseHandler : MonoBehaviour
         player.IncreaseHealth();
         player.cheeseCounter++;
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
