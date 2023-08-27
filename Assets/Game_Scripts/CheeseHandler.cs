@@ -20,13 +20,13 @@ public class CheeseHandler : MonoBehaviour
             var player = other.GetComponent<Player>();
             GetHealed(player);
         }
-        else if (other.CompareTag("Player") && cheeseState == CheeseState.SPEED)
+        if (other.CompareTag("Player") && cheeseState == CheeseState.SPEED)
         {
             var player = other.GetComponent<Player>();
             GetHealed(player);
             StartCoroutine(player.SpeedBoosted());
         }
-        else if (other.CompareTag("Player") && cheeseState == CheeseState.JUMP)
+        if (other.CompareTag("Player") && cheeseState == CheeseState.JUMP)
         {
             var player = other.GetComponent<Player>();
             GetHealed(player);
