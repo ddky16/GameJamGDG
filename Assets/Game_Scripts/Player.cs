@@ -6,19 +6,20 @@ using UnityEngine;
 public struct GravityManager
 {
     public const float GRAVITY_AMOUNT = -9.81f;
-    public const float GRAVITY_MULTIPLIER = -3.0f;
+    public const float GRAVITY_MULTIPLIER = -1.0f;
 }
 
 public class Player : MonoBehaviour
 {
     public CharacterController characterController;
+    public SoundManager soundManager;
 
     public Transform cam;
 
     private Vector3 _direction;
     private Vector3 _gravityVector;
 
-    public float speedAmount = 8f;
+    public float speedAmount = 5f;
     public float jumpAmount = 10f;
 
     public float turnSmoothTime = 0.1f;
@@ -29,11 +30,16 @@ public class Player : MonoBehaviour
 
     public int cheeseCounter = 0;
 
+    private void Awake()
+    {
+        soundManager = FindAnyObjectByType<SoundManager>();
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
 
-        Cursor.lockState = CursorLockMode.None;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -53,6 +59,12 @@ public class Player : MonoBehaviour
     {
         if (currentHealth > 100)
             currentHealth = 100;
+
+        if (currentHealth < 90)
+            soundManager.PlayHalfHP();
+
+        if (currentHealth < 15)
+            soundManager.PlayHalfHP();
 
         if (currentHealth < 0)
             currentHealth = 0;
