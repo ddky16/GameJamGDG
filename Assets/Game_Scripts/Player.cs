@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 {
     public CharacterController characterController;
     public SoundManager soundManager;
+    public InterfaceManager interfaceManager;
 
     public Transform cam;
 
@@ -30,6 +31,9 @@ public class Player : MonoBehaviour
 
     public int cheeseCounter = 0;
 
+    public bool isBoostedSpeed = false;
+    public bool isBoostedJump = false;
+
     private void Awake()
     {
         soundManager = FindAnyObjectByType<SoundManager>();
@@ -38,19 +42,20 @@ public class Player : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-
-        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
         _direction = new Vector3(horizontal, 0f, vertical);
 
-        MovementAction();
-
-        JumpAction();
+        if (_direction.magnitude >= 0.1f)
+        {
+            MovementAction();
+            JumpAction();
+        }
 
         HungerBar();
     }
@@ -59,12 +64,6 @@ public class Player : MonoBehaviour
     {
         if (currentHealth > 100)
             currentHealth = 100;
-
-        if (currentHealth < 90)
-            soundManager.PlayHalfHP();
-
-        if (currentHealth < 15)
-            soundManager.PlayHalfHP();
 
         if (currentHealth < 0)
             currentHealth = 0;
@@ -75,14 +74,14 @@ public class Player : MonoBehaviour
 
     private void MovementAction()
     {
-        if (_direction.magnitude >= 0.1f)
-        {
-            Vector3 moveDir = CameraControl();
+        Vector3 moveDir = CameraControl();
 
-            characterController.Move(moveDir.normalized * speedAmount * Time.deltaTime);
+        if (isBoostedSpeed)
+            characterController.Move(moveDir.normalized * 2 * speedAmount * Time.deltaTime);
+        else
+            characterController.Move(moveDir.normalized * 2 * speedAmount * Time.deltaTime);
 
-            JumpAction();
-        }
+        JumpAction();
     }
 
     private void JumpAction()
@@ -91,7 +90,12 @@ public class Player : MonoBehaviour
         {
             _gravityVector.y = -1f;
             if (Input.GetKeyDown(KeyCode.Space))
-                _gravityVector.y = jumpAmount;
+            {
+                if (isBoostedJump)
+                    _gravityVector.y = jumpAmount * 2;
+                else
+                    _gravityVector.y = jumpAmount;
+            }
         }
         else
         {
@@ -113,5 +117,19 @@ public class Player : MonoBehaviour
     public void IncreaseHealth()
     {
         currentHealth += 10;
+    }
+
+    public IEnumerator SpeedBoosted()
+    {
+        isBoostedSpeed = true;
+        yield return new WaitForSeconds(5);
+        isBoostedSpeed = false;
+    }
+
+    public IEnumerator JumpBoosted()
+    {
+        isBoostedJump = true;
+        yield return new WaitForSeconds(5);
+        isBoostedJump = false;
     }
 }
