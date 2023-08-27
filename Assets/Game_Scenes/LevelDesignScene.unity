@@ -1532,6 +1532,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9961d5020341d8c4ba1c16e79b973196, type: 3}
       insertIndex: -1
       addedObject: {fileID: 145536893}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9961d5020341d8c4ba1c16e79b973196, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145536894}
   m_SourcePrefab: {fileID: 100100000, guid: 9961d5020341d8c4ba1c16e79b973196, type: 3}
 --- !u!1 &145536892 stripped
 GameObject:
@@ -1551,6 +1554,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheeseState: 2
+--- !u!65 &145536894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145536892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009374455, y: 0.0053175343, z: 0.008766227}
+  m_Center: {x: -0.00008150167, y: -0.00084719644, z: 0.004160835}
 --- !u!1 &148228517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9475,7 +9499,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625583605}
-  m_LocalRotation: {x: 0.16018222, y: 0.000000025470568, z: -0.0000000041333035, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018224, y: -0.000000004252742, z: 6.9012535e-10, w: 0.9870875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13247,7 +13271,7 @@ MonoBehaviour:
   interfaceManager: {fileID: 476227882}
   cam: {fileID: 963194228}
   speedAmount: 5
-  jumpAmount: 20
+  jumpAmount: 10
   turnSmoothTime: 0.1
   cheeseCounter: 0
   isBoostedSpeed: 0
@@ -16276,7 +16300,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.13165644, y: -0.0000000085283025, z: 0.0000000011326654, w: 0.9912954}
+  m_LocalRotation: {x: 0.13165644, y: 0.0000000085283025, z: -0.0000000011326654, w: 0.9912954}
   m_LocalPosition: {x: 0, y: 2.5, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21979,6 +22003,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bc155fe353515e419a27b2a3206df72, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1351915683}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bc155fe353515e419a27b2a3206df72, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1351915684}
   m_SourcePrefab: {fileID: 100100000, guid: 2bc155fe353515e419a27b2a3206df72, type: 3}
 --- !u!1 &1351915682 stripped
 GameObject:
@@ -21998,6 +22025,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheeseState: 0
+--- !u!65 &1351915684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351915682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009374455, y: 0.0053175343, z: 0.008766227}
+  m_Center: {x: -0.00008150167, y: -0.00084719644, z: 0.004160835}
 --- !u!1 &1352395191
 GameObject:
   m_ObjectHideFlags: 0
@@ -31301,7 +31349,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950639848}
-  m_LocalRotation: {x: 0.13165644, y: -0.000000008528303, z: 0.0000000011326654, w: 0.99129546}
+  m_LocalRotation: {x: 0.13165644, y: 0.000000008528303, z: -0.0000000011326654, w: 0.99129546}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34124,6 +34172,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0fd4356bf85250548a06907acb2caa4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2123445028}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0fd4356bf85250548a06907acb2caa4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2123445029}
   m_SourcePrefab: {fileID: 100100000, guid: 0fd4356bf85250548a06907acb2caa4e, type: 3}
 --- !u!1 &2123445027 stripped
 GameObject:
@@ -34143,6 +34194,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheeseState: 1
+--- !u!65 &2123445029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123445027}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.009374455, y: 0.0053175343, z: 0.008766227}
+  m_Center: {x: -0.00008150167, y: -0.00084719644, z: 0.004160835}
 --- !u!4 &2126316285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8755487924173530337, guid: 09603274db056a741b88cd33575567db, type: 3}

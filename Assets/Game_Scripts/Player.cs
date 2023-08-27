@@ -6,7 +6,7 @@ using UnityEngine;
 public struct GravityManager
 {
     public const float GRAVITY_AMOUNT = -9.81f;
-    public const float GRAVITY_MULTIPLIER = -1.0f;
+    public const float GRAVITY_MULTIPLIER = -2.0f;
 }
 
 public class Player : MonoBehaviour
@@ -51,11 +51,8 @@ public class Player : MonoBehaviour
 
         _direction = new Vector3(horizontal, 0f, vertical);
 
-        if (_direction.magnitude >= 0.1f)
-        {
-            MovementAction();
-            JumpAction();
-        }
+        MovementAction();
+        JumpAction();
 
         HungerBar();
     }
@@ -74,14 +71,17 @@ public class Player : MonoBehaviour
 
     private void MovementAction()
     {
-        Vector3 moveDir = CameraControl();
+        if (_direction.magnitude >= 0.1f)
+        {
+            Vector3 moveDir = CameraControl();
 
-        if (isBoostedSpeed)
-            characterController.Move(moveDir.normalized * 2 * speedAmount * Time.deltaTime);
-        else
-            characterController.Move(moveDir.normalized * 2 * speedAmount * Time.deltaTime);
+            if (isBoostedSpeed)
+                characterController.Move(moveDir.normalized * 2 * speedAmount * Time.deltaTime);
+            else
+                characterController.Move(moveDir.normalized * 2 * speedAmount * Time.deltaTime);
 
-        JumpAction();
+            JumpAction();
+        }
     }
 
     private void JumpAction()
