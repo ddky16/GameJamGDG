@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerHUD : MonoBehaviour
 {
     Player player;
-    CheeseSpawner cheeseSpawner;
+
 
     public TextMeshProUGUI cheeseCounterTxt;
     public Image healthBar;
@@ -16,13 +16,12 @@ public class PlayerHUD : MonoBehaviour
     private void Start()
     {
         player = GetComponent<Player>();
-        cheeseSpawner = FindAnyObjectByType<CheeseSpawner>();
     }
 
     private void Update()
     {
         UpdateHealthBar(player.currentHealth, player.maxHealth);
-        cheeseCounterTxt.text = $"{player.cheeseCounter} / {cheeseSpawner.maxSpawn}";
+        cheeseCounterTxt.text = $"{player.cheeseCounter} / {16}";
     }
 
     public void UpdateHealthBar(float health, float maxHealth)

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private Vector3 _gravityVector;
 
     public float speedAmount = 8f;
+    public float boosterSpeedAmount = 8f;
     public float jumpAmount = 10f;
 
     public float turnSmoothTime = 0.1f;
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour
     public float currentHealth { get; private set; }
 
     public int cheeseCounter = 0;
+
+    public bool isBoostedSpeed = false;
+    public bool isBoostedJump = false;
 
     private void Start()
     {
@@ -40,11 +44,14 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        _direction = new Vector3(horizontal, 0f, vertical);
 
-        MovementAction();
+        _direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        JumpAction();
+        if (_direction.magnitude >= 0.1f)
+        {
+            MovementAction();
+            JumpAction();
+        }
 
         HungerBar();
     }
@@ -63,14 +70,12 @@ public class Player : MonoBehaviour
 
     private void MovementAction()
     {
-        if (_direction.magnitude >= 0.1f)
-        {
-            Vector3 moveDir = CameraControl();
+        Vector3 moveDir = CameraControl();
 
+        if (isBoostedSpeed)
+            characterController.Move(moveDir.normalized * (speedAmount * 3) * Time.deltaTime);
+        else
             characterController.Move(moveDir.normalized * speedAmount * Time.deltaTime);
-
-            JumpAction();
-        }
     }
 
     private void JumpAction()
@@ -79,7 +84,12 @@ public class Player : MonoBehaviour
         {
             _gravityVector.y = -1f;
             if (Input.GetKeyDown(KeyCode.Space))
-                _gravityVector.y = jumpAmount;
+            {
+                if (isBoostedJump)
+                    _gravityVector.y = jumpAmount * 3;
+                else
+                    _gravityVector.y = jumpAmount;
+            }
         }
         else
         {
@@ -101,5 +111,19 @@ public class Player : MonoBehaviour
     public void IncreaseHealth()
     {
         currentHealth += 10;
+    }
+
+    public IEnumerator SpeedBooster()
+    {
+        isBoostedSpeed = true;
+        yield return new WaitForSeconds(5);
+        isBoostedSpeed = false;
+    }
+
+    public IEnumerator JumpBooster()
+    {
+        isBoostedJump = true;
+        yield return new WaitForSeconds(5);
+        isBoostedJump = false;
     }
 }
